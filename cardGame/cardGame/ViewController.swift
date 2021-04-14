@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     lazy var game = MatchingGame(numberOfPairsOfCards: (cardButtons.count + 1) / 2);
     
     var emojis = ["😂", "🤣", "❤️", "😼", "🙏", "👐", "🤝", "💄", "👤", "🏃🏽", "👬", "💅", "🥂", "🍻", "🧂", "🍭"];
-    var emojiDict: Dictionary<Int, String> = [Int:String]();
+    var emojiDict: Dictionary<Card, String> = [Card:String]();
 
     var flipState: Bool = false;
 
@@ -65,13 +65,13 @@ class ViewController: UIViewController {
     }
 
     func emoji(for card: Card) -> String {
-        if self.emojiDict[card.identifier] == nil && !self.emojis.isEmpty {
+        if self.emojiDict[card] == nil && !self.emojis.isEmpty {
             let randomIndex = Int(arc4random_uniform(UInt32(self.emojis.count)));
-            self.emojiDict[card.identifier] = self.emojis[randomIndex];
+            self.emojiDict[card] = self.emojis[randomIndex];
             self.emojis.remove(at: randomIndex);
         }
 
-        return self.emojiDict[card.identifier] ?? "?";
+        return self.emojiDict[card] ?? "?";
     }
 
     @IBAction func reset(_ sender: UIButton) {

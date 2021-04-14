@@ -41,7 +41,7 @@ class MatchingGame {
         if !cards[index].isMatched {
             if let matchIndex = indexOfOneAndOnlyFaceUp {
                 if matchIndex != index {
-                    if cards[matchIndex].identifier == cards[index].identifier {
+                    if cards[matchIndex] == cards[index] {
                         cards[matchIndex].isMatched = true;
                         cards[index].isMatched = true;
                         self.score += 5;
