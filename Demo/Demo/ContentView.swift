@@ -12,10 +12,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            Image(systemName: "die.face.\(number).fill")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 100, height: 100, alignment: .top)
+            Dice(number: number)
 
             Button(action: {
                 number = Int.random(in: 1...6)
@@ -30,5 +27,16 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct Dice: View {
+    var number: Int
+
+    var body: some View {
+        Image(systemName: "die.face.\(number).fill")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 100, height: 100, alignment: .top)
     }
 }
